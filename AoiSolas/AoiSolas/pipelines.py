@@ -12,7 +12,6 @@ scrapy crawl AoiSola
 创建者：scrapy中文网（http://www.scrapyd.cn）；
 """
 
-
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 from scrapy.http import Request
@@ -40,7 +39,7 @@ class MyImagesPipeline(ImagesPipeline):
 
     def get_media_requests(self, item, info):
         for image_url in item['ImgUrl']:
-            yield Request(image_url,meta={'item':item['name']})
+            yield Request(image_url, headers={"referer": item["referer"]}, meta={'item': item['name']})
 
     def file_path(self, request, response=None, info=None):
         name = request.meta['item']
@@ -58,4 +57,3 @@ class MyImagesPipeline(ImagesPipeline):
             raise DropItem('Item contains no images')
         item['image_paths'] = image_path
         return item
-

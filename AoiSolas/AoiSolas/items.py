@@ -19,4 +19,5 @@ class AoisolasItem(scrapy.Item):
     # define the fields for your item here like:
     name = scrapy.Field()
     ImgUrl = scrapy.Field()
+    referer = scrapy.Field()
     pass

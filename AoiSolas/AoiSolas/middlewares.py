@@ -22,6 +22,8 @@ class AoisolasSpiderMiddleware(object):
 
     def process_request(self, request, spider):
         '''设置headers和切换请求头'''
-        referer = request.url
-        if referer:
-            request.headers['referer'] = referer
+        pass
+       # referer = request.headers["referer"]
+#
+       # if not referer:
+       #     request.headers['referer'] = "http://www.mm131.com"
